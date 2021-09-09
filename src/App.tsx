@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Navbar } from "./components/Navbar";
 import { TodoForm } from "./components/TodoForm";
 import { ITodo } from "./interfaces/Todo";
@@ -8,6 +8,16 @@ import './index.css'
 
 function App() {
   const [list, setList] = useState<ITodo[]>([])
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem('todos') || '[]')
+
+    setList(todos)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(list))
+  }, [list])
 
   const addHandler = (value: string): void => {
     const newTodo: ITodo = {
