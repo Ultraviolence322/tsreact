@@ -1,0 +1,12 @@
+.completed {
+  text-decoration: line-through;
+}
+
+.todos {
+  list-style: none;
+  max-width: 500px;
+}
+
+.todo {
+  border: 1px solid black
+}
